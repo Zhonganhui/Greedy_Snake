@@ -1,0 +1,38 @@
+{
+  // ============================================================
+  // C++ 项目模板 —— 工作区设置（复制到项目根目录的 .vscode/ 下）
+  // 这里不写任何绝对路径：cmake / ninja / g++ / gdb 都从 PATH 找
+  // ============================================================
+  "cmake.generator": "Ninja",
+  "cmake.buildDirectory": "${workspaceFolder}/build",
+  "cmake.configureArgs": ["-DCMAKE_EXPORT_COMPILE_COMMANDS=ON"],
+  "cmake.configureOnOpen": true,
+  "cmake.saveBeforeBuild": true,
+  "cmake.parallelJobs": 8,
+
+  // 智能提示/报错统一交给 clangd，关掉 cpptools 的 IntelliSense（两套引擎会互相打架）
+  "C_Cpp.intelliSenseEngine": "disabled",
+  "C_Cpp.errorSquiggles": "disabled",
+
+  "files.associations": { "*.h": "cpp", "*.hpp": "cpp", "*.tpp": "cpp", "*.ipp": "cpp" },
+
+  "files.encoding": "utf8",
+  "files.autoGuessEncoding": false,
+  "files.eol": "\n",
+  "files.trimTrailingWhitespace": true,
+  "files.insertFinalNewline": true,
+  "[cpp]": {
+    "editor.defaultFormatter": "llvm-vs-code-extensions.vscode-clangd",
+    "editor.formatOnSave": true,
+    "editor.tabSize": 2,
+    "editor.detectIndentation": false
+  },
+  "editor.rulers": [100],
+
+  // 构建产物只从全局搜索里排除，不从文件树隐藏（隐藏了会以为“没生成”）
+  "search.exclude": {
+    "**/build": true,
+    "**/out": true,
+    "**/.cache": true
+  }
+}

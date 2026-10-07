@@ -1,0 +1,25 @@
+# clangd 项目配置：用 build/ 里的编译数据库
+#
+# 【不要在这里加 -std=c++20 之类的语言标准！】
+#   本文件对整棵树生效；如果目录里混有 C 文件，给它传 C++ 标准会让 clangd 报错。
+#   标准由 CMakeLists.txt 的 CMAKE_CXX_STANDARD / CMAKE_C_STANDARD 传给编译器。
+CompileFlags:
+  CompilationDatabase: build
+
+Diagnostics:
+  ClangTidy:
+    Add:
+      - bugprone-*
+      - performance-*
+      - modernize-*
+    Remove:
+      - bugprone-easily-swappable-parameters
+      - modernize-use-trailing-return-type
+
+InlayHints:
+  Enabled: true
+  ParameterNames: true
+  DeducedTypes: true
+
+Hover:
+  ShowAKA: true

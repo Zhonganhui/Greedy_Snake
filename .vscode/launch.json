@@ -1,0 +1,24 @@
+{
+  // F5 调试：程序路径由 CMake Tools 提供（不用写死 exe 名字，改目标名也不会失效）
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "调试：CMake 当前选中的目标",
+      "type": "cppdbg",
+      "request": "launch",
+      "program": "${command:cmake.launchTargetPath}",
+      "args": [],
+      "stopAtEntry": false,
+      "cwd": "${command:cmake.launchTargetDirectory}",
+      "environment": [],
+      "externalConsole": false,
+      "MIMode": "gdb",
+      // 不写 miDebuggerPath：cpptools 会从 PATH 里找 gdb（MSYS2 的 ucrt64\bin 已在 PATH）
+      "setupCommands": [
+        { "description": "gdb 整齐打印（能看 STL 内容）", "text": "-enable-pretty-printing", "ignoreFailures": true },
+        { "description": "反汇编用 Intel 语法", "text": "-gdb-set disassembly-flavor intel", "ignoreFailures": true }
+      ],
+      "preLaunchTask": "构建（首次会自动配置）"
+    }
+  ]
+}

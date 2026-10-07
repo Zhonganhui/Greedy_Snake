@@ -1,0 +1,45 @@
+{
+  // Ctrl+Shift+B 默认跑「构建（首次会自动配置）」
+  //
+  // 【不要写 "preLaunchTask": "CMake: build"】
+  //   CMake Tools 只提供 cmake 这种“任务类型”，自动任务的标签是
+  //   「<文件夹名>: CMake: 生成」（中文界面），引用 "CMake: build" 会报 Could not find the task。
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "构建（首次会自动配置）",
+      "dependsOn": ["配置 CMake", "构建"],
+      "dependsOrder": "sequence",
+      "problemMatcher": [],
+      "group": { "kind": "build", "isDefault": true },
+      "presentation": { "reveal": "always", "clear": false, "panel": "shared" }
+    },
+    {
+      "label": "构建",
+      "type": "shell",
+      "command": "cmake",
+      "args": ["--build", "build"],
+      "options": { "cwd": "${workspaceFolder}" },
+      "problemMatcher": ["$gcc"],
+      "presentation": { "reveal": "always", "clear": true, "panel": "shared" }
+    },
+    {
+      "label": "配置 CMake",
+      "type": "shell",
+      "command": "cmake",
+      "args": ["-S", ".", "-B", "build", "-G", "Ninja", "-DCMAKE_EXPORT_COMPILE_COMMANDS=ON"],
+      "options": { "cwd": "${workspaceFolder}" },
+      "problemMatcher": [],
+      "presentation": { "reveal": "always", "clear": true, "panel": "shared" }
+    },
+    {
+      "label": "清理构建目录",
+      "type": "shell",
+      "command": "cmake",
+      "args": ["-E", "remove_directory", "build"],
+      "options": { "cwd": "${workspaceFolder}" },
+      "problemMatcher": [],
+      "presentation": { "reveal": "always", "clear": true, "panel": "shared" }
+    }
+  ]
+}

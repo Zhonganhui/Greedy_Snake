@@ -1,0 +1,12 @@
+# Google 风格 + 少量放宽
+BasedOnStyle: Google
+ColumnLimit: 100
+IndentWidth: 2
+TabWidth: 2
+UseTab: Never
+DerivePointerAlignment: false
+PointerAlignment: Left
+SortIncludes: Never
+IncludeBlocks: Preserve
+ReflowComments: true
+SpacesBeforeTrailingComments: 2
