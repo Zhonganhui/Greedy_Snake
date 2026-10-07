@@ -57,7 +57,6 @@
     跨平台
 
 项目结构
-text
 
 Greedy_Snake/
 ├── CMakeLists.txt
